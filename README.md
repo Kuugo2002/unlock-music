@@ -1,19 +1,15 @@
-# Unlock Music 音乐解锁
+# 原项目仓库地址
+https://git.unlock-music.dev/um/web
 
-[![Build Status](https://ci.unlock-music.dev/api/badges/um/web/status.svg)](https://ci.unlock-music.dev/um/web)
+# Unlock Music 音乐解锁
 
 - 在浏览器中解锁加密的音乐文件。 Unlock encrypted music file in the browser.
 - Unlock Music 项目是以学习和技术研究的初衷创建的，修改、再分发时请遵循[授权协议]。
 - Unlock Music 的 CLI 版本可以在 [unlock-music/cli] 找到，大批量转换建议使用 CLI 版本。
-- 我们新建了 Telegram 群组 [`@unlock_music_chat`] ，欢迎加入！
 - CI 自动构建已经部署，可以在 [um-packages] 下载
 
-> **WARNING**
-> 在本站 fork 不会起到备份的作用，只会浪费服务器储存空间。如无必要请勿 fork 该仓库。
-
-[授权协议]: https://git.unlock-music.dev/um/web/src/branch/master/LICENSE
+[授权协议]: https://github.com/Kuugo2002/unlock-music/blob/main/LICENSE
 [unlock-music/cli]: https://git.unlock-music.dev/um/cli
-[`@unlock_music_chat`]: https://t.me/unlock_music_chat
 [um-packages]: https://git.unlock-music.dev/um/-/packages/generic/web-build/
 
 ## 特性
@@ -49,7 +45,7 @@
   - :warning: 本地使用请下载`legacy版本`（`modern版本`只能通过 **http(s)协议** 访问）
 - 解压缩后即可部署或本地使用（**请勿直接运行源代码**）
 
-[release]: https://git.unlock-music.dev/um/web/releases/latest
+[release]: https://github.com/Kuugo2002/unlock-music/releases/latest
 
 ### 自行构建
 
@@ -78,3 +74,27 @@
    ```sh
    npm run make-extension
    ```
+
+### 在 cloudflare 上部署
+
+1. 将本项目fork到自己的仓库
+2. 在pages中进行构建
+   ```sh
+   # 构建命令
+   NODE_OPTIONS=--openssl-legacy-provider npm run build
+   # 部署命令
+   npx wrangler deploy --assets=./dist --compatibility-date 2025-04-06 #根据你自己的日期进行修改
+   ```
+
+### 在 vercel 上部署
+1. 将本项目fork到自己的仓库
+2. 然后使用vue.js进行构建
+   ```sh
+   # 构建命令
+   NODE_OPTIONS=--openssl-legacy-provider npm run build
+   # 部署命令
+   npm install && npm ci
+   ```
+
+## 注意事项
+QQ音乐的版本不能超过19.51，可以在[Release]中下载。
